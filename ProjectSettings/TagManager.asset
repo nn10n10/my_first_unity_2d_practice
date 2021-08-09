@@ -6,6 +6,7 @@ TagManager:
   tags:
   - collection
   - enemies
+  - deadline
   layers:
   - Default
   - TransparentFX
@@ -57,4 +58,7 @@ TagManager:
     locked: 0
   - name: player
     uniqueID: 2756714093
+    locked: 0
+  - name: deadline
+    uniqueID: 2250024345
     locked: 0

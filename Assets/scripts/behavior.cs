@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class behavior : MonoBehaviour
 {
-    public Transform CelingCheck;
+    private bool isGround;
+    public Transform CelingCheck,GroundCheck;
     private Rigidbody2D rb;//生成变量“RB" 数据属性为RIGIDBODY2D----drag进去
     public float speed;//生成“为10.00的speed"的浮点型变量（speed = 10f）---unity里改数值
     public float jumpforce;//设置变量，不给初始值所以游戏中自己设置，“Jump"在EDIT-projectsettings-input-axes中找到大小写拼写
@@ -19,6 +20,7 @@ public class behavior : MonoBehaviour
     public Text CherryNum;
     public AudioSource jumpAudio,hurtAudio,cherryAudio;
     private bool isHurt;
+    private int extraJump;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,8 +35,9 @@ public class behavior : MonoBehaviour
         {
             Movement();//函数MOVEMENT每一帧都执行
         }
+        newJump();
         CherryNum.text= Cherry.ToString();
-
+        isGround = Physics2D.OverlapCircle(GroundCheck.position,0.2f,ground);
     }
     void FixedUpdate()
     {
@@ -59,12 +62,12 @@ public class behavior : MonoBehaviour
 
         }
 
-        if(Input.GetButton("Jump")&&coll.IsTouchingLayers(ground))//当用户按下“Jump”按键
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpforce * Time.fixedDeltaTime);//纵值等于如果按下跳跃键后，乘以跳跃参数或重力 平滑不跳帧
-            jumpAudio.Play();
-            anim.SetBool("jumping",true);
-        }
+        // if(Input.GetButton("Jump")&&coll.IsTouchingLayers(ground))//当用户按下“Jump”按键
+        // {
+        //     rb.velocity = new Vector2(rb.velocity.x, jumpforce * Time.fixedDeltaTime);//纵值等于如果按下跳跃键后，乘以跳跃参数或重力 平滑不跳帧
+        //     jumpAudio.Play();
+        //     anim.SetBool("jumping",true);
+        // }
         crouch();
 
     } 
@@ -166,4 +169,25 @@ public class behavior : MonoBehaviour
     {
         Cherry += 1;
     }
+    void newJump()
+    {
+        if(isGround)
+        {
+            extraJump = 2;
+        }
+        if (Input.GetButton("Jump") && extraJump >0)
+        {
+            rb.velocity = Vector2.up * jumpforce;//new Vector2 (0,1)
+            extraJump--;
+            jumpAudio.Play();
+            anim.SetBool("jumping",true);
+        }
+        if (Input.GetButton("Jump") && extraJump == 0 && isGround)
+        {
+            rb.velocity = Vector2.up * jumpforce;
+            jumpAudio.Play();
+            anim.SetBool("jumping",true);
+        }
+    }
+
 }

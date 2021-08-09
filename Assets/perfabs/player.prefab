@@ -68,6 +68,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8637696206230285082}
+  - {fileID: 4685423660703807048}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -198,8 +199,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CelingCheck: {fileID: 8637696206230285082}
+  GroundCheck: {fileID: 4685423660703807048}
   speed: 300
-  jumpforce: 400
+  jumpforce: 8
   ground:
     serializedVersion: 2
     m_Bits: 256
@@ -238,7 +240,7 @@ AudioSource:
   m_GameObject: {fileID: 3234013387418459580}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: ece99152e41b5bc4ca1513776c54b6cb, type: 2}
   m_audioClip: {fileID: 8300000, guid: 475f4837af487ce4a9e68bb227455e4c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
@@ -334,7 +336,7 @@ AudioSource:
   m_GameObject: {fileID: 3234013387418459580}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: ece99152e41b5bc4ca1513776c54b6cb, type: 2}
   m_audioClip: {fileID: 8300000, guid: 026076d371cdc604482a1794035cb5e2, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.1
@@ -430,7 +432,7 @@ AudioSource:
   m_GameObject: {fileID: 3234013387418459580}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: ece99152e41b5bc4ca1513776c54b6cb, type: 2}
   m_audioClip: {fileID: 8300000, guid: 45484bfd721ed524e97fa4617b9855f5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.15
@@ -526,7 +528,7 @@ AudioSource:
   m_GameObject: {fileID: 3234013387418459580}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: ece99152e41b5bc4ca1513776c54b6cb, type: 2}
   m_audioClip: {fileID: 8300000, guid: 8a40c51b6f5a7244b9074b73808f35bb, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
@@ -613,3 +615,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &4165148880791513940
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4685423660703807048}
+  m_Layer: 0
+  m_Name: groundcheck
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4685423660703807048
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4165148880791513940}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.147, y: -1.019, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3234013387418459582}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
